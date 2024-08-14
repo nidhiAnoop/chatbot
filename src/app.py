@@ -56,7 +56,7 @@ def get_question(vector_store):
 def get_conversational_rag_chain(retriever_chain):
     llm = ChatOpenAI()
     prompt = ChatPromptTemplate.from_messages([
-        ("system" , "Answer the user's questions based on the below cntext: \n{context}"),
+        ("system" , "Answer the user's questions based on the below context: \n{context}"),
         MessagesPlaceholder(variable_name = "chat_history"),
         ("user", "{input}"),
     ])
@@ -99,8 +99,8 @@ else:
         st.write(response)
         ai_message = get_response(user_message)
         # session: amazon example
-        st.session_state.chat_history.append(HumanMessage(content = user_message))
-        st.session_state.chat_history.append(AIMessage(content = ai_message))
+        #st.session_state.chat_history.append(HumanMessage(content = user_message))
+        #st.session_state.chat_history.append(AIMessage(content = ai_message))
 
         retrieved_documents = retriever_chain.invoke({
             "chat_history" : st.session_state.chat_history,

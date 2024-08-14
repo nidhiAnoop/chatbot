@@ -91,7 +91,7 @@ else:
 
     user_message = st.chat_input("Type your message here...")
     if user_message is not None and user_message != "":
-        stuffed_chain.invoke({
+        response = stuffed_chain.invoke({
             "chat_history" : st.session_state.chat_history,
             "input" : user_message
         })
